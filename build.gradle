@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'com.dbinstallsetupconntect'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.6.2'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile 'org.mongodb:mongo-java-driver:2.12.3'
+    compile group: 'redis.clients', name: 'jedis', version: '2.8.0'
+    compile group: 'org.neo4j.driver', name: 'neo4j-java-driver', version: '4.0.1'
+    compile group: 'com.datastax.cassandra', name: 'cassandra-driver-core', version: '3.8.0'
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.14'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.20'
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
